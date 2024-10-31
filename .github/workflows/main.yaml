@@ -19,7 +19,8 @@
 #       with:
 #         artifacts: "build/app/outputs/apk/debug/*.apk"
 #         token: ${{ secrets.TOKEN }}
-# name: Flutter CI/CD
+
+name: Flutter CI/CD
 
 on:
   push:
@@ -42,7 +43,7 @@ jobs:
       - name: Setup Flutter
         uses: flutter-actions/setup-flutter@v3
         with:
-          flutter-version: "stable"
+          version: "stable"
 
       # Step 3: Cài đặt dependencies
       - name: Install dependencies
@@ -66,7 +67,8 @@ jobs:
           name: app-release.apk # Tên của artifact
           path: build/app/outputs/flutter-apk/app-release.apk # Đường dẫn tới file APK
 
-      # Step 7: Build iOS (nếu có nhu cầu triển khai cho iOS)
-      - name: Build iOS
-        run: flutter build ios --release
-        if: runner.os == 'macOS' # Chỉ chạy trên macOS runner
+
+      # # Step 7: Build iOS (nếu có nhu cầu triển khai cho iOS)
+      # - name: Build iOS
+      #   run: flutter build ios --release
+      #   if: runner.os == 'macOS' # Chỉ chạy trên macOS runner
